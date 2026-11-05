@@ -1,0 +1,1569 @@
+/* ==========================================================================
+   PERSONAL RESUME & PORTFOLIO STYLESHEET
+   Student: Aditya Raj
+   Program: Bachelor of Business Administration in Digital Business & Entrepreneurship (BBA DBE)
+   Institution: Indian Institute of Management Bangalore (IIM Bangalore)
+   Description: Clean, accessible, responsive CSS3 styling adhering to
+                rigorous web development coursework standards.
+   ========================================================================== */
+
+/* ==========================================================================
+   1. CSS VARIABLES (DESIGN SYSTEM TOKENS)
+   Concept: CSS Custom Properties (--variable-name) allow consistent reuse of
+   colors, typography, spacing, and elevation throughout the entire stylesheet.
+   If you ever need to change a brand color, you update it in one place!
+   ========================================================================== */
+:root {
+  /* Color Palette: Clean light background with navy and royal blue accents */
+  --color-bg: #f8fafc;                /* Primary canvas background (Slate 50) */
+  --color-bg-alt: #f1f5f9;            /* Subtle alternating section background (Slate 100) */
+  --color-surface: #ffffff;           /* Card & container background (Pure White) */
+  --color-surface-hover: #fcfdfe;     /* Subtle hover tint for surface cards */
+  
+  --color-navy-900: #0f172a;          /* Deep Navy - Headings, high emphasis text (Slate 900) */
+  --color-navy-800: #1e293b;          /* Dark Navy - Secondary headers, card titles (Slate 800) */
+  --color-slate-700: #334155;         /* Body Text - Crisp readable paragraph color (Slate 700) */
+  --color-slate-500: #64748b;         /* Muted Slate - Captions, subtitles, metadata (Slate 500) */
+  --color-slate-300: #cbd5e1;         /* Light border divider (Slate 300) */
+  --color-slate-200: #e2e8f0;         /* Card & container borders (Slate 200) */
+  --color-slate-100: #f1f5f9;         /* Soft pill/badge background (Slate 100) */
+
+  --color-blue-700: #1d4ed8;          /* Royal Blue Accent - Primary buttons, key highlights */
+  --color-blue-800: #1e40af;          /* Hover state for royal blue buttons */
+  --color-blue-50: #eff6ff;           /* Light blue accent tint for badge pills */
+  --color-blue-100: #dbeafe;          /* Border for blue accent elements */
+
+  --color-emerald-700: #047857;       /* Status indicator green for active enrollment */
+  --color-emerald-50: #ecfdf5;        /* Light emerald badge background */
+
+  /* Typography Scale */
+  --font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-family-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+
+  /* Spacing Scale (CSS Box Model: Margin & Padding) */
+  --space-2xs: 0.25rem;  /* 4px */
+  --space-xs: 0.5rem;    /* 8px */
+  --space-sm: 0.75rem;   /* 12px */
+  --space-md: 1rem;      /* 16px */
+  --space-lg: 1.5rem;    /* 24px */
+  --space-xl: 2rem;      /* 32px */
+  --space-2xl: 3rem;     /* 48px */
+  --space-3xl: 4.5rem;   /* 72px */
+
+  /* Border Radii */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  /* Elevation Shadows (CSS Box Shadow) */
+  --shadow-sm: 0 1px 2px 0 rgba(15, 23, 42, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.07), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.04);
+  --shadow-hover: 0 14px 20px -4px rgba(15, 23, 42, 0.12), 0 6px 8px -4px rgba(15, 23, 42, 0.06);
+
+  /* Transitions for smooth hover feedback */
+  --transition-fast: 0.18s ease-in-out;
+  --transition-normal: 0.25s ease-in-out;
+}
+
+/* ==========================================================================
+   2. CSS RESET & BOX MODEL DEMONSTRATION
+   Concept: The CSS Box Model comprises Content, Padding, Border, and Margin.
+   By default, browsers add padding and borders to an element's specified width,
+   which often breaks layouts. Declaring 'box-sizing: border-box' forces padding
+   and borders to be calculated INSIDE the width/height, creating predictable,
+   robust layouts.
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box; /* Core Box Model standard */
+  margin: 0;              /* Removes default browser margins */
+  padding: 0;             /* Removes default browser padding */
+}
+
+html {
+  font-size: 100%;        /* 16px baseline for accessible rem scaling */
+  scroll-behavior: smooth;/* Enables smooth gliding when clicking anchor links */
+  -webkit-text-size-adjust: 100%;
+}
+
+/* ==========================================================================
+   3. ELEMENT SELECTORS (BASE TYPOGRAPHY & TAG DEFAULTS)
+   Concept: Element selectors target native HTML tags directly (body, h1, p, etc.)
+   establishing site-wide typography, baseline colors, and responsive defaults.
+   ========================================================================== */
+body {
+  font-family: var(--font-family-base);
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--color-slate-700);
+  background-color: var(--color-bg);
+  min-height: 100vh;
+  display: flex;          /* Flexbox body ensures footer sits at the bottom */
+  flex-direction: column;
+  overflow-x: hidden;     /* Prevents accidental horizontal scrollbar */
+}
+
+h1, h2, h3, h4 {
+  color: var(--color-navy-900);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 1.875rem; }
+h3 { font-size: 1.35rem; }
+h4 { font-size: 1.05rem; }
+
+p {
+  margin-bottom: var(--space-md);
+  color: var(--color-slate-700);
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+a {
+  color: var(--color-blue-700);
+  text-decoration: none;
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-blue-800);
+}
+
+/* Keyboard accessibility: visual focus outline for users navigating via TAB key */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--color-blue-700);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+ul {
+  list-style: none;
+}
+
+code {
+  font-family: var(--font-family-mono);
+  font-size: 0.85em;
+  background-color: var(--color-slate-100);
+  padding: 0.15rem 0.4rem;
+  border-radius: var(--radius-sm);
+  color: var(--color-navy-900);
+  border: 1px solid var(--color-slate-200);
+}
+
+main {
+  flex: 1 0 auto; /* Pushes the footer cleanly to the bottom of the page */
+}
+
+/* ==========================================================================
+   4. ACCESSIBILITY: SKIP NAVIGATION LINK & SCREEN READER UTILITIES
+   Concept: Allows screen-reader and keyboard users to skip repetitive header
+   navigation and jump directly to the primary page content.
+   ========================================================================== */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: var(--space-md);
+  background-color: var(--color-navy-900);
+  color: #ffffff;
+  padding: var(--space-sm) var(--space-md);
+  z-index: 9999;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  transition: top var(--transition-fast);
+}
+
+.skip-link:focus {
+  top: var(--space-md);
+}
+
+/* Screen Reader Only Utility: Visually hidden but accessible to assistive technologies */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ==========================================================================
+   5. LAYOUT, SECTION & ID SELECTORS
+   Concept: Demonstrates ID selectors (#hero, #about, #education, etc.) which
+   have higher CSS specificity. Adding 'scroll-margin-top: 75px' ensures that
+   when navigating via anchor links, the sticky header (height: 70px) does not
+   obscure the section titles.
+   ========================================================================== */
+#hero,
+#about,
+#education,
+#skills,
+#interests,
+#projects {
+  scroll-margin-top: 75px; /* Offsets sticky header when jumping to anchors */
+}
+
+#main-content {
+  flex: 1 0 auto;          /* ID selector ensuring footer stays pinned at bottom */
+}
+
+.container {
+  width: 100%;
+  max-width: 1140px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-lg);
+  padding-right: var(--space-lg);
+}
+
+.section {
+  padding-top: var(--space-3xl);
+  padding-bottom: var(--space-3xl);
+  position: relative;
+}
+
+/* Alternating background class to create visual rhythm between sections */
+.bg-alt {
+  background-color: var(--color-bg-alt);
+  border-top: 1px solid var(--color-slate-200);
+  border-bottom: 1px solid var(--color-slate-200);
+}
+
+.section-header {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto var(--space-2xl) auto;
+}
+
+.section-eyebrow {
+  display: inline-block;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-blue-700);
+  margin-bottom: var(--space-xs);
+}
+
+.section-title {
+  font-size: 2rem;
+  margin-bottom: var(--space-sm);
+  color: var(--color-navy-900);
+}
+
+.section-divider {
+  width: 48px;
+  height: 3px;
+  background-color: var(--color-blue-700);
+  margin: 0 auto var(--space-md) auto;
+  border-radius: var(--radius-full);
+}
+
+.section-lead {
+  font-size: 1.0625rem;
+  color: var(--color-slate-500);
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   6. CARD & COMPONENT CLASS SELECTORS
+   Concept: Reusable UI cards illustrating the CSS Box Model with internal
+   padding, clean borders, and subtle shadow elevation.
+   ========================================================================== */
+.card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-slate-200);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
+  word-break: break-word;
+}
+
+/* Subtle card elevation hover effect */
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-slate-300);
+}
+
+.card-title {
+  font-size: 1.25rem;
+  color: var(--color-navy-900);
+  margin-bottom: var(--space-md);
+  padding-bottom: var(--space-xs);
+  border-bottom: 2px solid var(--color-blue-50);
+}
+
+/* ==========================================================================
+   7. BUTTONS & INTERACTIVE BADGES (FLEXBOX + DISPLAY PROPERTIES)
+   Concept: Demonstrates display: inline-flex, box model padding/margins,
+   and subtle hover feedback.
+   ========================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  padding: 0.75rem 1.4rem;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background-color var(--transition-fast), 
+              color var(--transition-fast), 
+              box-shadow var(--transition-fast), 
+              transform var(--transition-fast),
+              border-color var(--transition-fast);
+  text-decoration: none;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.btn-primary {
+  background-color: var(--color-blue-700);
+  color: #ffffff;
+  box-shadow: 0 2px 4px rgba(29, 78, 216, 0.25);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-blue-800);
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(29, 78, 216, 0.35);
+}
+
+.btn-secondary {
+  background-color: #ffffff;
+  color: var(--color-navy-900);
+  border: 1px solid var(--color-slate-300);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-bg-alt);
+  color: var(--color-navy-900);
+  border-color: var(--color-navy-900);
+  transform: translateY(-1px);
+}
+
+.btn-sm {
+  padding: 0.5rem 0.9rem;
+  font-size: 0.825rem;
+}
+
+.btn-large {
+  padding: 0.95rem 2rem;
+  font-size: 1.05rem;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.65rem;
+  background-color: var(--color-blue-50);
+  color: var(--color-blue-700);
+  border: 1px solid var(--color-blue-100);
+  border-radius: var(--radius-full);
+}
+
+.text-accent {
+  color: var(--color-blue-700);
+}
+
+.text-link {
+  font-weight: 600;
+  color: var(--color-blue-700);
+  border-bottom: 1px dashed var(--color-blue-700);
+}
+
+.text-link:hover {
+  border-bottom-style: solid;
+}
+
+/* ==========================================================================
+   8. HEADER & RESPONSIVE NAVIGATION
+   Concept: Demonstrates sticky positioning, Flexbox alignment, and
+   a pure CSS responsive hamburger menu toggle without JavaScript.
+   ========================================================================== */
+.site-header {
+  position: sticky;              /* Sticky Positioning keeps nav in view */
+  top: 0;
+  z-index: 1000;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);    /* Modern frosted glass effect */
+  border-bottom: 1px solid var(--color-slate-200);
+  box-shadow: var(--shadow-sm);
+}
+
+.header-container {
+  display: flex;                 /* Flexbox Layout */
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+  position: relative;            /* Anchor for positioning the compact mobile dropdown */
+}
+
+/* Brand Monogram & Name */
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  text-decoration: none;
+}
+
+.logo-badge {
+  width: 38px;
+  height: 38px;
+  background: linear-gradient(135deg, var(--color-navy-900), var(--color-blue-700));
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.95rem;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(15, 23, 42, 0.15);
+}
+
+.logo-text {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-navy-900);
+  letter-spacing: -0.01em;
+}
+
+/* Pure CSS Nav Toggle (Hidden on desktop) - Demonstrating ID selector */
+#nav-toggle,
+.nav-toggle-label {
+  display: none;
+}
+
+.hamburger-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 100%;
+  height: 100%;
+}
+
+.hamburger-bar {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background-color: var(--color-navy-900);
+  border-radius: 1px;
+  flex-shrink: 0;
+  transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+
+/* Primary Navigation Bar (Demonstrating ID selector #navbar on Desktop) */
+@media screen and (min-width: 769px) {
+  #navbar {
+    display: flex;
+    align-items: center;
+  }
+}
+
+/* Navigation Links - Desktop (Flexbox horizontal menu) */
+.nav-list {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.nav-link {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--color-slate-700);
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--radius-sm);
+  transition: color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.nav-link:hover {
+  color: var(--color-blue-700);
+  background-color: var(--color-blue-50);
+}
+
+.nav-btn {
+  background-color: var(--color-navy-900);
+  color: #ffffff;
+  padding: 0.45rem 1rem;
+  border-radius: var(--radius-md);
+}
+
+.nav-btn:hover {
+  background-color: var(--color-blue-700);
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   9. HERO SECTION (ID SELECTOR: #hero)
+   Concept: Combines ID selector (#hero), 2-Column CSS Grid layout,
+   monogram avatar card, and clear visual hierarchy.
+   ========================================================================== */
+#hero {
+  padding-top: var(--space-3xl);
+  padding-bottom: var(--space-3xl);
+  background: radial-gradient(circle at 10% 20%, rgba(219, 234, 254, 0.45) 0%, rgba(248, 250, 252, 0.9) 60%);
+  border-bottom: 1px solid var(--color-slate-200);
+}
+
+.hero-container {
+  display: grid;                 /* CSS Grid 2-Column Split */
+  grid-template-columns: 1.25fr 0.95fr;
+  align-items: center;
+  gap: var(--space-3xl);
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-emerald-700);
+  background-color: var(--color-emerald-50);
+  border: 1px solid rgba(4, 120, 87, 0.2);
+  padding: 0.35rem 0.8rem;
+  border-radius: var(--radius-full);
+  margin-bottom: var(--space-md);
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-emerald-700);
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.hero-title {
+  font-size: 3rem;
+  letter-spacing: -0.03em;
+  margin-bottom: var(--space-xs);
+  color: var(--color-navy-900);
+}
+
+.hero-subtitle {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--color-blue-700);
+  margin-bottom: var(--space-md);
+}
+
+.hero-description {
+  font-size: 1.08rem;
+  line-height: 1.7;
+  color: var(--color-slate-700);
+  margin-bottom: var(--space-xl);
+  max-width: 540px;
+}
+
+.hero-actions {
+  display: flex;                 /* Flexbox Button Group */
+  flex-wrap: wrap;
+  gap: var(--space-md);
+}
+
+/* Hero Right Profile Card (Monogram Avatar without requiring a photo) */
+.hero-visual {
+  display: flex;
+  justify-content: center;
+}
+
+.profile-card {
+  width: 100%;
+  max-width: 360px;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-slate-200);
+  border-radius: var(--radius-lg);
+  padding: var(--space-2xl) var(--space-xl);
+  text-align: center;
+  box-shadow: var(--shadow-md);
+  position: relative;
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.profile-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+.avatar-wrapper {
+  margin: 0 auto var(--space-lg) auto;
+  display: inline-block;
+  position: relative;
+}
+
+/* Elegant Monogram initials avatar badge */
+.avatar-monogram {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-navy-900) 0%, var(--color-blue-700) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 2.75rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  box-shadow: 0 8px 16px rgba(15, 23, 42, 0.15);
+  border: 4px solid #ffffff;
+  outline: 2px solid var(--color-slate-200);
+}
+
+/* Optional profile photograph styling when user chooses to add photo.jpg */
+.profile-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #ffffff;
+  outline: 2px solid var(--color-slate-200);
+  box-shadow: 0 8px 16px rgba(15, 23, 42, 0.15);
+}
+
+.profile-name {
+  font-size: 1.35rem;
+  color: var(--color-navy-900);
+  margin-bottom: var(--space-2xs);
+}
+
+.profile-tagline {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-slate-500);
+  margin-bottom: var(--space-lg);
+}
+
+.profile-meta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-slate-200);
+  text-align: left;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: 0.8125rem;
+  color: var(--color-slate-700);
+}
+
+.meta-icon {
+  font-size: 0.95rem;
+  color: var(--color-blue-700);
+}
+
+/* ==========================================================================
+   10. ABOUT ME SECTION (ID SELECTOR: #about)
+   Concept: Asymmetric 2-column CSS Grid layout pairing narrative with quick facts.
+   ========================================================================== */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: var(--space-xl);
+  align-items: start;
+}
+
+.about-story p {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  margin-bottom: var(--space-md);
+}
+
+.highlight-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.highlight-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+  padding: var(--space-sm);
+  background-color: var(--color-bg);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-slate-200);
+  word-break: break-word;
+}
+
+.highlight-icon {
+  font-size: 1.25rem;
+  background-color: #ffffff;
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 1px solid var(--color-slate-200);
+}
+
+.highlight-text {
+  font-size: 0.9125rem;
+  color: var(--color-navy-900);
+}
+
+.highlight-sub {
+  display: block;
+  font-size: 0.8125rem;
+  color: var(--color-slate-500);
+  margin-top: 2px;
+}
+
+/* ==========================================================================
+   11. EDUCATION SECTION (ID SELECTOR: #education)
+   Concept: 2-column CSS Grid timeline cards with badges and metadata.
+   ========================================================================== */
+.education-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-xl);
+}
+
+.education-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.education-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-md);
+}
+
+.edu-badge {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-full);
+  background-color: var(--color-slate-100);
+  color: var(--color-navy-800);
+  border: 1px solid var(--color-slate-300);
+}
+
+.edu-badge.edu-current {
+  background-color: var(--color-emerald-50);
+  color: var(--color-emerald-700);
+  border-color: rgba(4, 120, 87, 0.3);
+}
+
+.edu-status {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-slate-500);
+}
+
+.education-degree {
+  font-size: 1.25rem;
+  color: var(--color-navy-900);
+  margin-bottom: var(--space-2xs);
+}
+
+.education-institution {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-blue-700);
+  margin-bottom: var(--space-md);
+}
+
+.education-desc {
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--color-slate-700);
+  margin-bottom: var(--space-lg);
+  flex-grow: 1;
+}
+
+.education-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-slate-200);
+}
+
+/* ==========================================================================
+   12. SKILLS SECTION (ID SELECTOR: #skills)
+   Concept: Categorized card display distinguishing soft skills and AI tools.
+   ========================================================================== */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-xl);
+}
+
+.category-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--color-slate-200);
+}
+
+.category-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  background-color: var(--color-blue-50);
+  color: var(--color-blue-700);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+}
+
+.category-title {
+  font-size: 1.2rem;
+  color: var(--color-navy-900);
+}
+
+.category-subtitle {
+  font-size: 0.8125rem;
+  color: var(--color-slate-500);
+  margin-bottom: 0;
+}
+
+.skill-items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.skill-pill {
+  padding: var(--space-md);
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-slate-200);
+  border-radius: var(--radius-md);
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+.skill-pill:hover {
+  border-color: var(--color-blue-700);
+  transform: translateX(4px);
+}
+
+.skill-name {
+  display: block;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-navy-900);
+  margin-bottom: var(--space-2xs);
+}
+
+.skill-desc {
+  font-size: 0.875rem;
+  color: var(--color-slate-700);
+  line-height: 1.5;
+}
+
+.skills-note {
+  font-size: 0.9125rem;
+  color: var(--color-slate-700);
+  margin-bottom: var(--space-md);
+}
+
+.ai-tools-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-sm);
+}
+
+.ai-tool-card {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-slate-200);
+  border-radius: var(--radius-md);
+  transition: border-color var(--transition-fast), background-color var(--transition-fast);
+  word-break: break-word;
+}
+
+.ai-tool-card:hover {
+  border-color: var(--color-blue-700);
+  background-color: #ffffff;
+}
+
+.tool-bullet {
+  color: var(--color-blue-700);
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.tool-meta {
+  font-size: 0.825rem;
+  color: var(--color-slate-500);
+  margin-top: 2px;
+  margin-bottom: 0;
+}
+
+/* ==========================================================================
+   13. AREAS OF INTEREST SECTION (ID SELECTOR: #interests)
+   Concept: CSS Grid showcasing academic and entrepreneurial focal areas.
+   ========================================================================== */
+.interests-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-xl);
+}
+
+.interest-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.interest-icon-box {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-md);
+  background-color: var(--color-blue-50);
+  border: 1px solid var(--color-blue-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  margin-bottom: var(--space-md);
+}
+
+.interest-title {
+  font-size: 1.35rem;
+  color: var(--color-navy-900);
+  margin-bottom: var(--space-xs);
+}
+
+.interest-desc {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--color-slate-700);
+  margin-bottom: var(--space-lg);
+  flex-grow: 1;
+}
+
+.interest-points {
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-slate-200);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.interest-points li {
+  position: relative;
+  padding-left: var(--space-lg);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-navy-800);
+}
+
+.interest-points li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--color-blue-700);
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   14. PROJECTS SECTION (ID SELECTOR: #projects)
+   Concept: Showcases coursework project without inventing completed works.
+   ========================================================================== */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-xl);
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.project-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-sm);
+}
+
+.project-tag {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-blue-700);
+}
+
+.tag-pipeline {
+  color: var(--color-slate-500);
+}
+
+.project-year {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-slate-500);
+}
+
+.project-title {
+  font-size: 1.3rem;
+  color: var(--color-navy-900);
+  margin-bottom: var(--space-sm);
+}
+
+.project-desc {
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--color-slate-700);
+  margin-bottom: var(--space-md);
+}
+
+.project-highlights {
+  background-color: var(--color-bg);
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-slate-200);
+  margin-bottom: var(--space-md);
+}
+
+.project-highlights h4 {
+  font-size: 0.85rem;
+  color: var(--color-navy-900);
+  margin-bottom: var(--space-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.project-highlights ul {
+  padding-left: var(--space-md);
+  list-style: disc;
+}
+
+.project-highlights li {
+  font-size: 0.825rem;
+  color: var(--color-slate-700);
+  margin-bottom: var(--space-2xs);
+  line-height: 1.5;
+}
+
+.project-highlights li:last-child {
+  margin-bottom: 0;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-lg);
+}
+
+.project-footer {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-slate-200);
+}
+
+.card-future {
+  border-style: dashed;
+  background-color: #fafbfc;
+}
+
+.status-note {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-slate-500);
+  font-style: italic;
+}
+
+
+/* ==========================================================================
+   16. FOOTER (ELEMENT SELECTOR: footer, .site-footer)
+   Concept: Semantic footer with copyright, navigation links, and back-to-top.
+   ========================================================================== */
+.site-footer {
+  background-color: var(--color-navy-900);
+  color: #ffffff;
+  padding-top: var(--space-2xl);
+  padding-bottom: var(--space-xl);
+  margin-top: auto;
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.footer-brand {
+  text-align: center;
+}
+
+.footer-logo {
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+  display: block;
+  margin-bottom: var(--space-2xs);
+}
+
+.footer-tagline {
+  font-size: 0.875rem;
+  color: var(--color-slate-300);
+  margin-bottom: 0;
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: center;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-lg);
+}
+
+.footer-links a {
+  color: var(--color-slate-300);
+  font-size: 0.875rem;
+  transition: color var(--transition-fast);
+}
+
+.footer-links a:hover {
+  color: #ffffff;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding-top: var(--space-lg);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.8125rem;
+  color: var(--color-slate-400);
+  gap: var(--space-sm);
+}
+
+.copyright {
+  margin-bottom: 0;
+  color: var(--color-slate-300);
+}
+
+.footer-note {
+  margin-bottom: 0;
+  color: var(--color-slate-400);
+  font-size: 0.775rem;
+}
+
+.back-to-top {
+  color: var(--color-slate-300);
+  font-weight: 600;
+  font-size: 0.8125rem;
+}
+
+.back-to-top:hover {
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   17. RESPONSIVE DESIGN (MEDIA QUERIES)
+   Concept: CSS Media Queries (@media) adapt layout, sizing, and structure
+   across Desktop, Tablet, and Mobile devices.
+   ========================================================================== */
+
+/* TABLET BREAKPOINT (max-width: 992px) */
+@media screen and (max-width: 992px) {
+  .hero-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: var(--space-2xl);
+  }
+
+  .hero-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-description {
+    max-width: 620px;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .education-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .interests-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* MOBILE BREAKPOINT (max-width: 768px) */
+@media screen and (max-width: 768px) {
+  :root {
+    --space-3xl: 3.5rem;
+    --space-2xl: 2.25rem;
+    --space-xl: 1.5rem;
+  }
+
+  .header-container {
+    height: 64px;                /* Compact mobile header height */
+  }
+
+  .container {
+    padding-left: var(--space-md);
+    padding-right: var(--space-md);
+  }
+
+  h1 { font-size: 2.15rem; }
+  h2 { font-size: 1.65rem; }
+  .hero-title { font-size: 2.25rem; }
+
+  /* Responsive Pure CSS Navigation Menu (Keyboard & Screen Reader Accessible) */
+  #nav-toggle.nav-toggle {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+    display: block;              /* Kept in DOM and Tab Order on mobile viewports */
+  }
+
+  .nav-toggle-label {
+    display: inline-flex;        /* Reveals the hamburger icon */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border-radius: var(--radius-sm);
+    user-select: none;
+    border: 1px solid var(--color-slate-200);
+    background-color: #ffffff;
+    transition: background-color var(--transition-fast), border-color var(--transition-fast);
+  }
+
+  .nav-toggle-label:hover {
+    background-color: var(--color-blue-50);
+    border-color: var(--color-blue-200);
+  }
+
+  /* Clear visual focus outline when keyboard user tabs to the hamburger toggle */
+  #nav-toggle:focus-visible + .nav-toggle-label {
+    outline: 2px solid var(--color-blue-700);
+    outline-offset: 3px;
+    border-color: var(--color-blue-700);
+  }
+
+  /* Compact Floating Dropdown Panel Overlay (Does NOT push page content) */
+  #navbar,
+  .main-nav {
+    position: absolute;
+    top: calc(100% + 8px);       /* Floats just beneath header */
+    right: 0;                    /* Aligns to right edge of container */
+    left: auto;
+    width: min(240px, calc(100vw - 2rem)); /* Compact floating width */
+    background-color: #ffffff;
+    border: 1px solid var(--color-slate-200);
+    border-radius: var(--radius-md);
+    box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.15), 0 4px 6px -2px rgba(15, 23, 42, 0.05);
+    padding: 0.5rem;
+    display: none;               /* Collapsed by default */
+    z-index: 1001;               /* Overlays content cleanly */
+  }
+
+  .nav-list {
+    flex-direction: column;      /* Stacks navigation items vertically */
+    align-items: stretch;
+    gap: 3px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-link {
+    display: flex;
+    align-items: center;
+    padding: 0.55rem 0.85rem;    /* Comfortable ~40px tap target */
+    font-size: 0.9125rem;
+    font-weight: 500;
+    color: var(--color-slate-700);
+    border-radius: var(--radius-sm);
+    transition: background-color var(--transition-fast), color var(--transition-fast);
+  }
+
+  .nav-link:hover,
+  .nav-link:active {
+    background-color: var(--color-blue-50);
+    color: var(--color-blue-700);
+  }
+
+  .nav-btn {
+    text-align: center;
+    justify-content: center;
+    margin-top: 4px;
+    padding: 0.525rem 0.85rem;
+    background-color: var(--color-navy-900);
+    color: #ffffff;
+    border-radius: var(--radius-sm);
+  }
+
+  .nav-btn:hover,
+  .nav-btn:active {
+    background-color: var(--color-blue-700);
+    color: #ffffff;
+  }
+
+  /* When checkbox is checked, expand the mobile navigation (ID selector) */
+  #nav-toggle:checked ~ #navbar,
+  #nav-toggle:checked ~ .main-nav,
+  .nav-toggle:checked ~ #navbar,
+  .nav-toggle:checked ~ .main-nav {
+    display: block;
+    animation: navDropdownFade 0.16s ease-out;
+  }
+
+  @keyframes navDropdownFade {
+    from {
+      opacity: 0;
+      transform: translateY(-6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Animated transformation into 'X' close icon */
+  #nav-toggle:checked ~ .nav-toggle-label .hamburger-bar:nth-child(1),
+  .nav-toggle:checked ~ .nav-toggle-label .hamburger-bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  #nav-toggle:checked ~ .nav-toggle-label .hamburger-bar:nth-child(2),
+  .nav-toggle:checked ~ .nav-toggle-label .hamburger-bar:nth-child(2) {
+    opacity: 0;
+  }
+  #nav-toggle:checked ~ .nav-toggle-label .hamburger-bar:nth-child(3),
+  .nav-toggle:checked ~ .nav-toggle-label .hamburger-bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--space-md);
+  }
+}
+
+/* SMALL SCREENS & MOBILE (max-width: 640px) */
+@media screen and (max-width: 640px) {
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+  }
+
+  .btn-large {
+    width: 100%;
+  }
+
+  .footer-links {
+    gap: var(--space-sm) var(--space-md);
+  }
+}
+
+/* SMALL MOBILE BREAKPOINT (max-width: 480px) */
+@media screen and (max-width: 480px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.15rem;
+  }
+
+  .status-badge {
+    font-size: 0.775rem;
+    padding: 0.3rem 0.65rem;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .profile-card {
+    max-width: 300px;
+    padding: var(--space-md);
+  }
+
+  .avatar-monogram {
+    width: 96px;
+    height: 96px;
+    font-size: 2rem;
+  }
+
+  .card {
+    padding: 1.25rem 1rem;
+  }
+
+  .section-title {
+    font-size: 1.65rem;
+  }
+
+  .section-header {
+    margin-bottom: var(--space-xl);
+  }
+
+  .highlight-item {
+    padding: 0.65rem;
+    gap: 0.65rem;
+  }
+
+  .highlight-icon {
+    width: 34px;
+    height: 34px;
+    font-size: 1.1rem;
+  }
+
+  .category-header {
+    gap: var(--space-sm);
+  }
+
+  .category-icon {
+    width: 38px;
+    height: 38px;
+    font-size: 1.15rem;
+  }
+}
+
+/* EXTRA SMALL MOBILE BREAKPOINT (max-width: 380px) */
+@media screen and (max-width: 380px) {
+  .container {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  .hero-title {
+    font-size: 1.75rem;
+  }
+
+  .hero-actions {
+    max-width: 100%;
+  }
+
+  .profile-card {
+    max-width: 270px;
+    padding: 1rem 0.75rem;
+  }
+
+  .avatar-monogram {
+    width: 84px;
+    height: 84px;
+    font-size: 1.75rem;
+  }
+
+  .card {
+    padding: 1rem 0.75rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .main-nav {
+    width: calc(100vw - 1.5rem);
+    right: 0;
+  }
+}
+
+/* ==========================================================================
+   18. PRINT STYLESHEET
+   Concept: Clean output when a professor, recruiter, or evaluator prints the page.
+   ========================================================================== */
+@media print {
+  .site-header,
+  .hero-actions,
+  .footer-nav,
+  .back-to-top,
+  .skip-link,
+  .nav-toggle-label {
+    display: none !important;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-size: 11pt;
+  }
+
+  .section {
+    padding: 1.5rem 0 !important;
+  }
+
+  .card {
+    box-shadow: none !important;
+    border: 1px solid #cccccc !important;
+    break-inside: avoid;
+  }
+}

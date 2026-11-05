@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Personal resume and portfolio website of Aditya Raj, Undergraduate Student in BBA DBE at IIM Bangalore.">
+  <meta name="author" content="Aditya Raj">
+  <title>Aditya Raj | Personal Resume &amp; Portfolio</title>
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- Google Fonts: Inter for crisp, modern typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Accessible Skip Navigation Link for Keyboard & Screen Reader Users -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- ========================================================
+       HEADER & RESPONSIVE NAVIGATION
+       Demonstrates: Semantic <header> & <nav>, Flexbox,
+       Sticky Positioning, and Accessible Pure CSS Responsive Toggle
+       ======================================================== -->
+  <header class="site-header">
+    <div class="container header-container">
+      <!-- Brand Logo / Monogram -->
+      <a href="#hero" class="brand-logo" aria-label="Aditya Raj Home">
+        <span class="logo-badge">AR</span>
+        <span class="logo-text">Aditya Raj</span>
+      </a>
+
+      <!-- Accessible Pure CSS Responsive Hamburger Toggle (Operable via Keyboard & Screen Readers) -->
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation menu" aria-controls="navbar">
+      <label for="nav-toggle" class="nav-toggle-label" title="Toggle navigation menu">
+        <span class="sr-only">Toggle navigation menu</span>
+        <span class="hamburger-box">
+          <span class="hamburger-bar" aria-hidden="true"></span>
+          <span class="hamburger-bar" aria-hidden="true"></span>
+          <span class="hamburger-bar" aria-hidden="true"></span>
+        </span>
+      </label>
+
+      <!-- Navigation Menu -->
+      <nav id="navbar" class="main-nav" aria-label="Primary Navigation">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+          <li class="nav-item"><a href="#education" class="nav-link">Education</a></li>
+          <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
+          <li class="nav-item"><a href="#interests" class="nav-link">Interests</a></li>
+          <li class="nav-item"><a href="#projects" class="nav-link nav-btn">Projects</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ========================================================
+       MAIN CONTENT CONTAINER
+       ======================================================== -->
+  <main id="main-content">
+
+    <!-- ======================================================
+         HERO SECTION
+         Demonstrates: ID selector (#hero), Flexbox/Grid, 
+         Visual Hierarchy, Spacing, and CTA Buttons
+         ====================================================== -->
+    <section id="hero" class="hero-section">
+      <div class="container hero-container">
+        
+        <!-- Left Column: Introduction & Call-to-Actions -->
+        <div class="hero-text">
+          <div class="status-badge">
+            <span class="status-dot" aria-hidden="true"></span>
+            <span>BBA DBE Student &bull; IIM Bangalore</span>
+          </div>
+
+          <h1 class="hero-title">
+            Hi, I'm <span class="text-accent">Aditya Raj</span>
+          </h1>
+
+          <p class="hero-subtitle">Undergraduate Student</p>
+
+          <p class="hero-description">
+            Undergraduate student enrolled in the Bachelor of Business Administration in Digital Business &amp; Entrepreneurship (BBA DBE) program at the Indian Institute of Management Bangalore (IIM Bangalore), started in 2026. Interested in entrepreneurship and marketing, with core skills in problem-solving and teamwork, and familiarity with contemporary AI tools.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#projects" class="btn btn-primary">View Coursework</a>
+            <a href="#education" class="btn btn-secondary">Explore Academic Path</a>
+          </div>
+        </div>
+
+        <!-- Right Column: Visual Avatar Card (Complete without requiring a photo) -->
+        <div class="hero-visual">
+          <div class="profile-card">
+            <div class="avatar-wrapper">
+              <!-- Monogram Avatar: Elegant, modern, fully functional without an image -->
+              <div class="avatar-monogram" aria-label="Aditya Raj Initials Avatar">
+                <span>AR</span>
+              </div>
+
+              <!-- NOTE FOR ADITYA:
+                   To add a profile photo in the future:
+                   1. Place your image (e.g. photo.jpg) in the project folder.
+                   2. Replace the .avatar-monogram div above with:
+                      <img src="photo.jpg" alt="Aditya Raj portrait" class="profile-img">
+              -->
+            </div>
+
+            <div class="profile-details">
+              <h2 class="profile-name">Aditya Raj</h2>
+              <p class="profile-tagline">IIM Bangalore &bull; BBA DBE (2026)</p>
+              <div class="profile-meta">
+                <span class="meta-item">
+                  <span class="meta-icon" aria-hidden="true">&#127891;</span>
+                  <span>Undergraduate Student</span>
+                </span>
+                <span class="meta-item">
+                  <span class="meta-icon" aria-hidden="true">&#127963;</span>
+                  <span>IIM Bangalore (2026)</span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================
+         ABOUT ME SECTION
+         Demonstrates: Semantic <section> and <article>,
+         Box Model with clean padding/margins, and CSS Grid
+         ====================================================== -->
+    <section id="about" class="section about-section">
+      <div class="container">
+        
+        <div class="section-header">
+          <span class="section-eyebrow">Introduction</span>
+          <h2 class="section-title">About Me</h2>
+          <div class="section-divider"></div>
+        </div>
+
+        <div class="about-grid">
+          <!-- Main Narrative Article -->
+          <article class="about-story card">
+            <h3 class="card-title">Background &amp; Studies</h3>
+            <p>
+              I am an undergraduate student enrolled in the <strong>Bachelor of Business Administration in Digital Business &amp; Entrepreneurship (BBA DBE)</strong> program at the <strong>Indian Institute of Management Bangalore (IIM Bangalore)</strong>, having started in <strong>2026</strong>.
+            </p>
+            <p>
+              Prior to joining IIM Bangalore, I completed my <strong>Class 12</strong> secondary education.
+            </p>
+            <p>
+              My areas of interest are <strong>entrepreneurship</strong> and <strong>marketing</strong>. I focus on developing my problem-solving and teamwork capabilities, and I am comfortable using modern AI tools to support my coursework and learning.
+            </p>
+          </article>
+
+          <!-- Key Highlights / Quick Facts Card -->
+          <aside class="about-highlights card">
+            <h3 class="card-title">Profile Snapshot</h3>
+            <ul class="highlight-list">
+              <li class="highlight-item">
+                <div class="highlight-icon" aria-hidden="true">&#127891;</div>
+                <div class="highlight-text">
+                  <strong>Current Program:</strong> BBA DBE
+                  <span class="highlight-sub">IIM Bangalore (Started 2026)</span>
+                </div>
+              </li>
+              <li class="highlight-item">
+                <div class="highlight-icon" aria-hidden="true">&#128218;</div>
+                <div class="highlight-text">
+                  <strong>Previous Qualification:</strong> Class 12
+                  <span class="highlight-sub">Secondary Education</span>
+                </div>
+              </li>
+              <li class="highlight-item">
+                <div class="highlight-icon" aria-hidden="true">&#9881;</div>
+                <div class="highlight-text">
+                  <strong>Areas of Interest:</strong> Entrepreneurship &amp; Marketing
+                  <span class="highlight-sub">Business &amp; Digital Topics</span>
+                </div>
+              </li>
+              <li class="highlight-item">
+                <div class="highlight-icon" aria-hidden="true">&#127963;</div>
+                <div class="highlight-text">
+                  <strong>Institution:</strong> IIM Bangalore
+                  <span class="highlight-sub">Enrolled 2026</span>
+                </div>
+              </li>
+            </ul>
+          </aside>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================
+         EDUCATION SECTION
+         Demonstrates: CSS Grid layout, Timeline cards,
+         Semantic <article> tags, and strict factual compliance
+         ====================================================== -->
+    <section id="education" class="section education-section bg-alt">
+      <div class="container">
+
+        <div class="section-header">
+          <span class="section-eyebrow">Academic Background</span>
+          <h2 class="section-title">Education</h2>
+          <div class="section-divider"></div>
+          <p class="section-lead">Current degree program and completed secondary education.</p>
+        </div>
+
+        <div class="education-grid">
+          
+          <!-- Education Card 1: IIM Bangalore -->
+          <article class="education-card card">
+            <div class="education-header">
+              <div class="edu-badge edu-current">2026 &ndash; Present</div>
+              <span class="edu-status">Currently Pursuing</span>
+            </div>
+            
+            <h3 class="education-degree">Bachelor of Business Administration (BBA DBE)</h3>
+            <h4 class="education-institution">Indian Institute of Management Bangalore (IIM Bangalore)</h4>
+            
+            <p class="education-desc">
+              Undergraduate program in <strong>Digital Business and Entrepreneurship</strong>, covering foundational business principles, digital business models, marketing, and entrepreneurial strategy.
+            </p>
+            
+            <div class="education-tags">
+              <span class="badge">Digital Business</span>
+              <span class="badge">Entrepreneurship</span>
+              <span class="badge">Undergraduate Degree</span>
+            </div>
+          </article>
+
+          <!-- Education Card 2: Class 12 -->
+          <article class="education-card card">
+            <div class="education-header">
+              <div class="edu-badge">Completed</div>
+              <span class="edu-status">Secondary Qualification</span>
+            </div>
+            
+            <h3 class="education-degree">Class 12</h3>
+            <h4 class="education-institution">Senior Secondary Education</h4>
+            
+            <p class="education-desc">
+              Completed Class 12 secondary qualification prior to joining the BBA DBE program at IIM Bangalore.
+            </p>
+
+            <div class="education-tags">
+              <span class="badge">Class 12</span>
+              <span class="badge">Completed</span>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================
+         SKILLS SECTION
+         Demonstrates: Grouped Flexbox / Grid layout,
+         Badge pills, and hover feedback
+         ====================================================== -->
+    <section id="skills" class="section skills-section">
+      <div class="container">
+
+        <div class="section-header">
+          <span class="section-eyebrow">Skills &amp; Tools</span>
+          <h2 class="section-title">Skills &amp; AI Tools</h2>
+          <div class="section-divider"></div>
+          <p class="section-lead">Core interpersonal skills and AI tools I am comfortable using.</p>
+        </div>
+
+        <div class="skills-grid">
+          
+          <!-- Category 1: Core Skills -->
+          <div class="skills-category card">
+            <div class="category-header">
+              <div class="category-icon" aria-hidden="true">&#9879;</div>
+              <div>
+                <h3 class="category-title">Core Skills</h3>
+                <p class="category-subtitle">Interpersonal and analytical skills</p>
+              </div>
+            </div>
+
+            <div class="skill-items">
+              <div class="skill-pill">
+                <span class="skill-name">Problem-Solving</span>
+                <span class="skill-desc">Approaching problems thoughtfully and working through challenges systematically.</span>
+              </div>
+              <div class="skill-pill">
+                <span class="skill-name">Teamwork</span>
+                <span class="skill-desc">Working cooperatively with peers and communicating clearly in team activities.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 2: AI Tools -->
+          <div class="skills-category card">
+            <div class="category-header">
+              <div class="category-icon" aria-hidden="true">&#129302;</div>
+              <div>
+                <h3 class="category-title">AI Tools</h3>
+                <p class="category-subtitle">Tools I am comfortable using</p>
+              </div>
+            </div>
+
+            <p class="skills-note">
+              Familiar with and comfortable using the following AI tools for coursework and productivity:
+            </p>
+
+            <div class="ai-tools-list">
+              <div class="ai-tool-card">
+                <div class="tool-bullet" aria-hidden="true">&bull;</div>
+                <div>
+                  <strong>ChatGPT</strong>
+                  <p class="tool-meta">Used for text drafting, research queries, and brainstorming.</p>
+                </div>
+              </div>
+
+              <div class="ai-tool-card">
+                <div class="tool-bullet" aria-hidden="true">&bull;</div>
+                <div>
+                  <strong>Gemini</strong>
+                  <p class="tool-meta">Used for information gathering, inquiries, and coursework assistance.</p>
+                </div>
+              </div>
+
+              <div class="ai-tool-card">
+                <div class="tool-bullet" aria-hidden="true">&bull;</div>
+                <div>
+                  <strong>Claude</strong>
+                  <p class="tool-meta">Used for reading assistance, writing support, and structured tasks.</p>
+                </div>
+              </div>
+
+              <div class="ai-tool-card">
+                <div class="tool-bullet" aria-hidden="true">&bull;</div>
+                <div>
+                  <strong>Google Antigravity</strong>
+                  <p class="tool-meta">Used for digital workspaces and developer-assisted workflows.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================
+         AREAS OF INTEREST SECTION
+         Demonstrates: CSS Grid, visual cards, balanced typography
+         ====================================================== -->
+    <section id="interests" class="section interests-section bg-alt">
+      <div class="container">
+
+        <div class="section-header">
+          <span class="section-eyebrow">Academic &amp; Professional Focus</span>
+          <h2 class="section-title">Areas of Interest</h2>
+          <div class="section-divider"></div>
+          <p class="section-lead">Core areas of academic and professional interest.</p>
+        </div>
+
+        <div class="interests-grid">
+          
+          <!-- Interest 1: Entrepreneurship -->
+          <article class="interest-card card">
+            <div class="interest-icon-box" aria-hidden="true">&#128640;</div>
+            <h3 class="interest-title">Entrepreneurship</h3>
+            <p class="interest-desc">
+              Interested in how new enterprises are built, how digital business models function, and how startups solve practical problems in the marketplace.
+            </p>
+            <ul class="interest-points">
+              <li>Digital Business Models</li>
+              <li>Venture Planning &amp; Ideation</li>
+              <li>Practical Problem-Solving</li>
+            </ul>
+          </article>
+
+          <!-- Interest 2: Marketing -->
+          <article class="interest-card card">
+            <div class="interest-icon-box" aria-hidden="true">&#128200;</div>
+            <h3 class="interest-title">Marketing</h3>
+            <p class="interest-desc">
+              Interested in marketing concepts, understanding consumer needs, brand communication, and the role of digital channels in reaching audiences.
+            </p>
+            <ul class="interest-points">
+              <li>Marketing Principles &amp; Concepts</li>
+              <li>Consumer Needs &amp; Audience Insights</li>
+              <li>Digital Communication Channels</li>
+            </ul>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================
+         PROJECTS SECTION
+         Demonstrates: Card layout, CSS Grid, 
+         Coursework project inclusion without inventing external facts
+         ====================================================== -->
+    <section id="projects" class="section projects-section">
+      <div class="container">
+
+        <div class="section-header">
+          <span class="section-eyebrow">Coursework &amp; Projects</span>
+          <h2 class="section-title">Projects</h2>
+          <div class="section-divider"></div>
+          <p class="section-lead">Academic projects developed as part of undergraduate coursework.</p>
+        </div>
+
+        <div class="projects-grid">
+          
+          <!-- Project 1: Personal Resume & Portfolio Website (The real coursework project) -->
+          <article class="project-card card">
+            <div class="project-header">
+              <span class="project-tag">Coursework Project &bull; In Development</span>
+              <span class="project-year">2026</span>
+            </div>
+
+            <h3 class="project-title">Personal Resume &amp; Portfolio Website</h3>
+            
+            <p class="project-desc">
+              A responsive personal resume website built with semantic HTML5 and clean CSS3 as a coursework project. Designed to demonstrate foundational web development concepts including semantic structure, the CSS box model, Flexbox, CSS Grid, and media queries.
+            </p>
+
+            <div class="project-highlights">
+              <h4>Key Implementations:</h4>
+              <ul>
+                <li>Semantic HTML5 elements (<code>header</code>, <code>nav</code>, <code>main</code>, <code>section</code>, <code>article</code>, <code>footer</code>).</li>
+                <li>CSS Box Model, Flexbox layout, and CSS Grid card columns.</li>
+                <li>CSS media queries for mobile, tablet, and desktop viewports.</li>
+                <li>Accessible markup with high-contrast text and keyboard-accessible mobile menu.</li>
+              </ul>
+            </div>
+
+            <div class="project-tags">
+              <span class="badge">HTML5</span>
+              <span class="badge">CSS3</span>
+              <span class="badge">Flexbox</span>
+              <span class="badge">CSS Grid</span>
+              <span class="badge">Responsive Design</span>
+            </div>
+
+            <div class="project-footer">
+              <a href="#hero" class="btn btn-secondary btn-sm">View Top</a>
+              <a href="#about" class="btn btn-primary btn-sm">Read About Me</a>
+            </div>
+          </article>
+
+          <!-- Project 2: Future Coursework Placeholder -->
+          <article class="project-card card card-future">
+            <div class="project-header">
+              <span class="project-tag tag-pipeline">Upcoming Coursework</span>
+              <span class="project-year">BBA DBE</span>
+            </div>
+
+            <h3 class="project-title">Future Coursework Projects</h3>
+            
+            <p class="project-desc">
+              Additional academic assignments, coursework case studies, and business projects developed during the BBA DBE degree at IIM Bangalore will be documented here as they are completed.
+            </p>
+
+            <div class="project-highlights">
+              <h4>Planned Coursework Areas:</h4>
+              <ul>
+                <li>Digital business case analyses.</li>
+                <li>Marketing and consumer research studies.</li>
+                <li>Business management assignments.</li>
+              </ul>
+            </div>
+
+            <div class="project-tags">
+              <span class="badge">Coursework</span>
+              <span class="badge">BBA DBE</span>
+              <span class="badge">Academic Work</span>
+            </div>
+
+            <div class="project-footer">
+              <span class="status-note">&#9203; Space reserved for upcoming coursework</span>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================
+       FOOTER
+       Demonstrates: Semantic <footer>, copyright,
+       coursework statement, back-to-top anchor
+       ======================================================== -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      
+      <div class="footer-brand">
+        <span class="footer-logo">Aditya Raj</span>
+        <p class="footer-tagline">Undergraduate Student &bull; BBA DBE at IIM Bangalore</p>
+      </div>
+
+      <nav class="footer-nav" aria-label="Footer Navigation">
+        <ul class="footer-links">
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#interests">Interests</a></li>
+          <li><a href="#projects">Projects</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer-bottom">
+        <p class="copyright">&copy; 2026 Aditya Raj. All rights reserved.</p>
+        <p class="footer-note">Built with semantic HTML5 &amp; CSS3 for coursework</p>
+        <a href="#hero" class="back-to-top" aria-label="Back to top of page">&uarr; Back to top</a>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Progressive Enhancement: Automatically close mobile navigation when a link is tapped -->
+  <script>
+    document.querySelectorAll('.main-nav .nav-link').forEach(function(link) {
+      link.addEventListener('click', function() {
+        var navToggle = document.getElementById('nav-toggle');
+        if (navToggle) {
+          navToggle.checked = false;
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
