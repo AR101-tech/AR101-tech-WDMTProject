@@ -7,33 +7,29 @@
   <meta name="author" content="Aditya Raj">
   <title>Aditya Raj | Personal Resume &amp; Portfolio</title>
   
-  <!-- Main Stylesheet -->
+  <!-- Stylesheet -->
   <link rel="stylesheet" href="style.css">
   
-  <!-- Google Fonts: Inter for crisp, modern typography -->
+  <!-- Google Font: Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <!-- Accessible Skip Navigation Link for Keyboard & Screen Reader Users -->
+  <!-- Skip link for keyboard navigation -->
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <!-- ========================================================
-       HEADER & RESPONSIVE NAVIGATION
-       Demonstrates: Semantic <header> & <nav>, Flexbox,
-       Sticky Positioning, and Accessible Pure CSS Responsive Toggle
-       ======================================================== -->
+  <!-- Header and navigation -->
   <header class="site-header">
     <div class="container header-container">
-      <!-- Brand Logo / Monogram -->
+      <!-- Site logo -->
       <a href="#hero" class="brand-logo" aria-label="Aditya Raj Home">
         <span class="logo-badge">AR</span>
         <span class="logo-text">Aditya Raj</span>
       </a>
 
-      <!-- Accessible Pure CSS Responsive Hamburger Toggle (Operable via Keyboard & Screen Readers) -->
+      <!-- Mobile navigation toggle -->
       <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation menu" aria-controls="navbar">
       <label for="nav-toggle" class="nav-toggle-label" title="Toggle navigation menu">
         <span class="sr-only">Toggle navigation menu</span>
@@ -44,7 +40,7 @@
         </span>
       </label>
 
-      <!-- Navigation Menu -->
+      <!-- Main navigation -->
       <nav id="navbar" class="main-nav" aria-label="Primary Navigation">
         <ul class="nav-list">
           <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
@@ -57,20 +53,14 @@
     </div>
   </header>
 
-  <!-- ========================================================
-       MAIN CONTENT CONTAINER
-       ======================================================== -->
+  <!-- Main content -->
   <main id="main-content">
 
-    <!-- ======================================================
-         HERO SECTION
-         Demonstrates: ID selector (#hero), Flexbox/Grid, 
-         Visual Hierarchy, Spacing, and CTA Buttons
-         ====================================================== -->
+    <!-- Hero section -->
     <section id="hero" class="hero-section">
       <div class="container hero-container">
         
-        <!-- Left Column: Introduction & Call-to-Actions -->
+        <!-- Introduction and links -->
         <div class="hero-text">
           <div class="status-badge">
             <span class="status-dot" aria-hidden="true"></span>
@@ -93,21 +83,16 @@
           </div>
         </div>
 
-        <!-- Right Column: Visual Avatar Card (Complete without requiring a photo) -->
+        <!-- Profile card -->
         <div class="hero-visual">
           <div class="profile-card">
             <div class="avatar-wrapper">
-              <!-- Monogram Avatar: Elegant, modern, fully functional without an image -->
-              <div class="avatar-monogram" aria-label="Aditya Raj Initials Avatar">
+              <!-- Initials avatar -->
+              <div class="avatar-monogram" role="img" aria-label="Aditya Raj initials">
                 <span>AR</span>
               </div>
 
-              <!-- NOTE FOR ADITYA:
-                   To add a profile photo in the future:
-                   1. Place your image (e.g. photo.jpg) in the project folder.
-                   2. Replace the .avatar-monogram div above with:
-                      <img src="photo.jpg" alt="Aditya Raj portrait" class="profile-img">
-              -->
+              <!-- Replace the initials with a profile photo if you want to add one. -->
             </div>
 
             <div class="profile-details">
@@ -130,11 +115,7 @@
       </div>
     </section>
 
-    <!-- ======================================================
-         ABOUT ME SECTION
-         Demonstrates: Semantic <section> and <article>,
-         Box Model with clean padding/margins, and CSS Grid
-         ====================================================== -->
+    <!-- About section -->
     <section id="about" class="section about-section">
       <div class="container">
         
@@ -145,7 +126,7 @@
         </div>
 
         <div class="about-grid">
-          <!-- Main Narrative Article -->
+          <!-- About section text -->
           <article class="about-story card">
             <h3 class="card-title">Background &amp; Studies</h3>
             <p>
@@ -159,7 +140,7 @@
             </p>
           </article>
 
-          <!-- Key Highlights / Quick Facts Card -->
+          <!-- Profile highlights -->
           <aside class="about-highlights card">
             <h3 class="card-title">Profile Snapshot</h3>
             <ul class="highlight-list">
@@ -198,11 +179,7 @@
       </div>
     </section>
 
-    <!-- ======================================================
-         EDUCATION SECTION
-         Demonstrates: CSS Grid layout, Timeline cards,
-         Semantic <article> tags, and strict factual compliance
-         ====================================================== -->
+    <!-- Education section -->
     <section id="education" class="section education-section bg-alt">
       <div class="container">
 
@@ -215,7 +192,7 @@
 
         <div class="education-grid">
           
-          <!-- Education Card 1: IIM Bangalore -->
+          <!-- Current education -->
           <article class="education-card card">
             <div class="education-header">
               <div class="edu-badge edu-current">2026 &ndash; Present</div>
@@ -236,7 +213,7 @@
             </div>
           </article>
 
-          <!-- Education Card 2: Class 12 -->
+          <!-- Previous education -->
           <article class="education-card card">
             <div class="education-header">
               <div class="edu-badge">Completed</div>
@@ -261,11 +238,7 @@
       </div>
     </section>
 
-    <!-- ======================================================
-         SKILLS SECTION
-         Demonstrates: Grouped Flexbox / Grid layout,
-         Badge pills, and hover feedback
-         ====================================================== -->
+    <!-- Skills section -->
     <section id="skills" class="section skills-section">
       <div class="container">
 
@@ -278,7 +251,7 @@
 
         <div class="skills-grid">
           
-          <!-- Category 1: Core Skills -->
+          <!-- Core skills -->
           <div class="skills-category card">
             <div class="category-header">
               <div class="category-icon" aria-hidden="true">&#9879;</div>
@@ -300,7 +273,7 @@
             </div>
           </div>
 
-          <!-- Category 2: AI Tools -->
+          <!-- AI tools -->
           <div class="skills-category card">
             <div class="category-header">
               <div class="category-icon" aria-hidden="true">&#129302;</div>
@@ -354,10 +327,7 @@
       </div>
     </section>
 
-    <!-- ======================================================
-         AREAS OF INTEREST SECTION
-         Demonstrates: CSS Grid, visual cards, balanced typography
-         ====================================================== -->
+    <!-- Areas of interest -->
     <section id="interests" class="section interests-section bg-alt">
       <div class="container">
 
@@ -370,7 +340,7 @@
 
         <div class="interests-grid">
           
-          <!-- Interest 1: Entrepreneurship -->
+          <!-- Entrepreneurship -->
           <article class="interest-card card">
             <div class="interest-icon-box" aria-hidden="true">&#128640;</div>
             <h3 class="interest-title">Entrepreneurship</h3>
@@ -384,7 +354,7 @@
             </ul>
           </article>
 
-          <!-- Interest 2: Marketing -->
+          <!-- Marketing -->
           <article class="interest-card card">
             <div class="interest-icon-box" aria-hidden="true">&#128200;</div>
             <h3 class="interest-title">Marketing</h3>
@@ -403,11 +373,7 @@
       </div>
     </section>
 
-    <!-- ======================================================
-         PROJECTS SECTION
-         Demonstrates: Card layout, CSS Grid, 
-         Coursework project inclusion without inventing external facts
-         ====================================================== -->
+    <!-- Projects section -->
     <section id="projects" class="section projects-section">
       <div class="container">
 
@@ -420,7 +386,7 @@
 
         <div class="projects-grid">
           
-          <!-- Project 1: Personal Resume & Portfolio Website (The real coursework project) -->
+          <!-- Resume website project -->
           <article class="project-card card">
             <div class="project-header">
               <span class="project-tag">Coursework Project &bull; In Development</span>
@@ -457,7 +423,7 @@
             </div>
           </article>
 
-          <!-- Project 2: Future Coursework Placeholder -->
+          <!-- Future projects -->
           <article class="project-card card card-future">
             <div class="project-header">
               <span class="project-tag tag-pipeline">Upcoming Coursework</span>
@@ -497,11 +463,7 @@
 
   </main>
 
-  <!-- ========================================================
-       FOOTER
-       Demonstrates: Semantic <footer>, copyright,
-       coursework statement, back-to-top anchor
-       ======================================================== -->
+  <!-- Footer -->
   <footer class="site-footer">
     <div class="container footer-container">
       
@@ -530,7 +492,7 @@
     </div>
   </footer>
 
-  <!-- Progressive Enhancement: Automatically close mobile navigation when a link is tapped -->
+  <!-- Close mobile navigation after selecting a link -->
   <script>
     document.querySelectorAll('.main-nav .nav-link').forEach(function(link) {
       link.addEventListener('click', function() {
