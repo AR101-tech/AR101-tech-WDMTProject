@@ -1,20 +1,11 @@
-/* ==========================================================================
-   PERSONAL RESUME & PORTFOLIO STYLESHEET
-   Student: Aditya Raj
-   Program: Bachelor of Business Administration in Digital Business & Entrepreneurship (BBA DBE)
-   Institution: Indian Institute of Management Bangalore (IIM Bangalore)
-   Description: Clean, accessible, responsive CSS3 styling adhering to
-                rigorous web development coursework standards.
-   ========================================================================== */
+/* Personal resume website styles */
 
 /* ==========================================================================
-   1. CSS VARIABLES (DESIGN SYSTEM TOKENS)
-   Concept: CSS Custom Properties (--variable-name) allow consistent reuse of
-   colors, typography, spacing, and elevation throughout the entire stylesheet.
-   If you ever need to change a brand color, you update it in one place!
+   1. CSS VARIABLES
+
    ========================================================================== */
 :root {
-  /* Color Palette: Clean light background with navy and royal blue accents */
+  /* Colour palette */
   --color-bg: #f8fafc;                /* Primary canvas background (Slate 50) */
   --color-bg-alt: #f1f5f9;            /* Subtle alternating section background (Slate 100) */
   --color-surface: #ffffff;           /* Card & container background (Pure White) */
@@ -24,6 +15,7 @@
   --color-navy-800: #1e293b;          /* Dark Navy - Secondary headers, card titles (Slate 800) */
   --color-slate-700: #334155;         /* Body Text - Crisp readable paragraph color (Slate 700) */
   --color-slate-500: #64748b;         /* Muted Slate - Captions, subtitles, metadata (Slate 500) */
+  --color-slate-400: #94a3b8;          /* Muted text on dark backgrounds */
   --color-slate-300: #cbd5e1;         /* Light border divider (Slate 300) */
   --color-slate-200: #e2e8f0;         /* Card & container borders (Slate 200) */
   --color-slate-100: #f1f5f9;         /* Soft pill/badge background (Slate 100) */
@@ -31,16 +23,17 @@
   --color-blue-700: #1d4ed8;          /* Royal Blue Accent - Primary buttons, key highlights */
   --color-blue-800: #1e40af;          /* Hover state for royal blue buttons */
   --color-blue-50: #eff6ff;           /* Light blue accent tint for badge pills */
-  --color-blue-100: #dbeafe;          /* Border for blue accent elements */
+  --color-blue-100: #dbeafe;
+  --color-blue-200: #bfdbfe;          /* Border for blue accent elements */
 
   --color-emerald-700: #047857;       /* Status indicator green for active enrollment */
   --color-emerald-50: #ecfdf5;        /* Light emerald badge background */
 
-  /* Typography Scale */
+  /* Fonts */
   --font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --font-family-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
 
-  /* Spacing Scale (CSS Box Model: Margin & Padding) */
+  /* Spacing */
   --space-2xs: 0.25rem;  /* 4px */
   --space-xs: 0.5rem;    /* 8px */
   --space-sm: 0.75rem;   /* 12px */
@@ -50,49 +43,44 @@
   --space-2xl: 3rem;     /* 48px */
   --space-3xl: 4.5rem;   /* 72px */
 
-  /* Border Radii */
+  /* Rounded corners */
   --radius-sm: 6px;
   --radius-md: 10px;
   --radius-lg: 16px;
   --radius-full: 9999px;
 
-  /* Elevation Shadows (CSS Box Shadow) */
+  /* Shadows */
   --shadow-sm: 0 1px 2px 0 rgba(15, 23, 42, 0.05);
   --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.07), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
   --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.04);
   --shadow-hover: 0 14px 20px -4px rgba(15, 23, 42, 0.12), 0 6px 8px -4px rgba(15, 23, 42, 0.06);
 
-  /* Transitions for smooth hover feedback */
+  /* Hover transitions */
   --transition-fast: 0.18s ease-in-out;
   --transition-normal: 0.25s ease-in-out;
 }
 
 /* ==========================================================================
-   2. CSS RESET & BOX MODEL DEMONSTRATION
-   Concept: The CSS Box Model comprises Content, Padding, Border, and Margin.
-   By default, browsers add padding and borders to an element's specified width,
-   which often breaks layouts. Declaring 'box-sizing: border-box' forces padding
-   and borders to be calculated INSIDE the width/height, creating predictable,
-   robust layouts.
+   2. RESET AND BOX MODEL
+
    ========================================================================== */
 *,
 *::before,
 *::after {
-  box-sizing: border-box; /* Core Box Model standard */
-  margin: 0;              /* Removes default browser margins */
-  padding: 0;             /* Removes default browser padding */
+  box-sizing: border-box; /* Include padding and border in element width */
+  margin: 0;              
+  padding: 0;             
 }
 
 html {
   font-size: 100%;        /* 16px baseline for accessible rem scaling */
-  scroll-behavior: smooth;/* Enables smooth gliding when clicking anchor links */
+  scroll-behavior: smooth;/* Smooth anchor scrolling */
   -webkit-text-size-adjust: 100%;
 }
 
 /* ==========================================================================
-   3. ELEMENT SELECTORS (BASE TYPOGRAPHY & TAG DEFAULTS)
-   Concept: Element selectors target native HTML tags directly (body, h1, p, etc.)
-   establishing site-wide typography, baseline colors, and responsive defaults.
+   3. ELEMENT SELECTORS
+
    ========================================================================== */
 body {
   font-family: var(--font-family-base);
@@ -101,9 +89,9 @@ body {
   color: var(--color-slate-700);
   background-color: var(--color-bg);
   min-height: 100vh;
-  display: flex;          /* Flexbox body ensures footer sits at the bottom */
+  display: flex;          /* Keep the footer at the bottom */
   flex-direction: column;
-  overflow-x: hidden;     /* Prevents accidental horizontal scrollbar */
+  overflow-x: hidden;     /* Avoid horizontal overflow */
 }
 
 h1, h2, h3, h4 {
@@ -161,13 +149,12 @@ code {
 }
 
 main {
-  flex: 1 0 auto; /* Pushes the footer cleanly to the bottom of the page */
+  flex: 1 0 auto; 
 }
 
 /* ==========================================================================
-   4. ACCESSIBILITY: SKIP NAVIGATION LINK & SCREEN READER UTILITIES
-   Concept: Allows screen-reader and keyboard users to skip repetitive header
-   navigation and jump directly to the primary page content.
+   4. ACCESSIBILITY HELPERS
+
    ========================================================================== */
 .skip-link {
   position: absolute;
@@ -200,11 +187,8 @@ main {
 }
 
 /* ==========================================================================
-   5. LAYOUT, SECTION & ID SELECTORS
-   Concept: Demonstrates ID selectors (#hero, #about, #education, etc.) which
-   have higher CSS specificity. Adding 'scroll-margin-top: 75px' ensures that
-   when navigating via anchor links, the sticky header (height: 70px) does not
-   obscure the section titles.
+   5. LAYOUT AND ID SELECTORS
+
    ========================================================================== */
 #hero,
 #about,
@@ -212,7 +196,7 @@ main {
 #skills,
 #interests,
 #projects {
-  scroll-margin-top: 75px; /* Offsets sticky header when jumping to anchors */
+  scroll-margin-top: 75px; /* Keep headings visible below the sticky header */
 }
 
 #main-content {
@@ -234,7 +218,7 @@ main {
   position: relative;
 }
 
-/* Alternating background class to create visual rhythm between sections */
+/* Alternate section background */
 .bg-alt {
   background-color: var(--color-bg-alt);
   border-top: 1px solid var(--color-slate-200);
@@ -278,9 +262,8 @@ main {
 }
 
 /* ==========================================================================
-   6. CARD & COMPONENT CLASS SELECTORS
-   Concept: Reusable UI cards illustrating the CSS Box Model with internal
-   padding, clean borders, and subtle shadow elevation.
+   6. CARD STYLES
+
    ========================================================================== */
 .card {
   background-color: var(--color-surface);
@@ -292,7 +275,7 @@ main {
   word-break: break-word;
 }
 
-/* Subtle card elevation hover effect */
+/* Card hover effect */
 .card:hover {
   transform: translateY(-3px);
   box-shadow: var(--shadow-lg);
@@ -308,9 +291,8 @@ main {
 }
 
 /* ==========================================================================
-   7. BUTTONS & INTERACTIVE BADGES (FLEXBOX + DISPLAY PROPERTIES)
-   Concept: Demonstrates display: inline-flex, box model padding/margins,
-   and subtle hover feedback.
+   7. BUTTONS AND BADGES
+
    ========================================================================== */
 .btn {
   display: inline-flex;
@@ -394,9 +376,8 @@ main {
 }
 
 /* ==========================================================================
-   8. HEADER & RESPONSIVE NAVIGATION
-   Concept: Demonstrates sticky positioning, Flexbox alignment, and
-   a pure CSS responsive hamburger menu toggle without JavaScript.
+   8. HEADER AND NAVIGATION
+
    ========================================================================== */
 .site-header {
   position: sticky;              /* Sticky Positioning keeps nav in view */
@@ -416,7 +397,7 @@ main {
   position: relative;            /* Anchor for positioning the compact mobile dropdown */
 }
 
-/* Brand Monogram & Name */
+/* Site logo */
 .brand-logo {
   display: flex;
   align-items: center;
@@ -445,7 +426,7 @@ main {
   letter-spacing: -0.01em;
 }
 
-/* Pure CSS Nav Toggle (Hidden on desktop) - Demonstrating ID selector */
+/* Mobile menu toggle (hidden on desktop) */
 #nav-toggle,
 .nav-toggle-label {
   display: none;
@@ -471,7 +452,7 @@ main {
   transition: transform var(--transition-fast), opacity var(--transition-fast);
 }
 
-/* Primary Navigation Bar (Demonstrating ID selector #navbar on Desktop) */
+/* Desktop navigation */
 @media screen and (min-width: 769px) {
   #navbar {
     display: flex;
@@ -479,7 +460,7 @@ main {
   }
 }
 
-/* Navigation Links - Desktop (Flexbox horizontal menu) */
+/* Navigation links */
 .nav-list {
   display: flex;
   align-items: center;
@@ -513,9 +494,8 @@ main {
 }
 
 /* ==========================================================================
-   9. HERO SECTION (ID SELECTOR: #hero)
-   Concept: Combines ID selector (#hero), 2-Column CSS Grid layout,
-   monogram avatar card, and clear visual hierarchy.
+   9. HERO SECTION
+
    ========================================================================== */
 #hero {
   padding-top: var(--space-3xl);
@@ -581,7 +561,7 @@ main {
   gap: var(--space-md);
 }
 
-/* Hero Right Profile Card (Monogram Avatar without requiring a photo) */
+/* Profile card */
 .hero-visual {
   display: flex;
   justify-content: center;
@@ -611,7 +591,7 @@ main {
   position: relative;
 }
 
-/* Elegant Monogram initials avatar badge */
+/* Initials avatar */
 .avatar-monogram {
   width: 120px;
   height: 120px;
@@ -629,7 +609,7 @@ main {
   outline: 2px solid var(--color-slate-200);
 }
 
-/* Optional profile photograph styling when user chooses to add photo.jpg */
+/* Optional profile photo */
 .profile-img {
   width: 120px;
   height: 120px;
@@ -676,8 +656,8 @@ main {
 }
 
 /* ==========================================================================
-   10. ABOUT ME SECTION (ID SELECTOR: #about)
-   Concept: Asymmetric 2-column CSS Grid layout pairing narrative with quick facts.
+   10. ABOUT SECTION
+
    ========================================================================== */
 .about-grid {
   display: grid;
@@ -735,8 +715,8 @@ main {
 }
 
 /* ==========================================================================
-   11. EDUCATION SECTION (ID SELECTOR: #education)
-   Concept: 2-column CSS Grid timeline cards with badges and metadata.
+   11. EDUCATION SECTION
+
    ========================================================================== */
 .education-grid {
   display: grid;
@@ -811,8 +791,8 @@ main {
 }
 
 /* ==========================================================================
-   12. SKILLS SECTION (ID SELECTOR: #skills)
-   Concept: Categorized card display distinguishing soft skills and AI tools.
+   12. SKILLS SECTION
+
    ========================================================================== */
 .skills-grid {
   display: grid;
@@ -928,8 +908,8 @@ main {
 }
 
 /* ==========================================================================
-   13. AREAS OF INTEREST SECTION (ID SELECTOR: #interests)
-   Concept: CSS Grid showcasing academic and entrepreneurial focal areas.
+   13. AREAS OF INTEREST
+
    ========================================================================== */
 .interests-grid {
   display: grid;
@@ -994,8 +974,8 @@ main {
 }
 
 /* ==========================================================================
-   14. PROJECTS SECTION (ID SELECTOR: #projects)
-   Concept: Showcases coursework project without inventing completed works.
+   14. PROJECTS SECTION
+
    ========================================================================== */
 .projects-grid {
   display: grid;
@@ -1108,10 +1088,9 @@ main {
   font-style: italic;
 }
 
-
 /* ==========================================================================
-   16. FOOTER (ELEMENT SELECTOR: footer, .site-footer)
-   Concept: Semantic footer with copyright, navigation links, and back-to-top.
+   15. FOOTER
+
    ========================================================================== */
 .site-footer {
   background-color: var(--color-navy-900);
@@ -1202,12 +1181,11 @@ main {
 }
 
 /* ==========================================================================
-   17. RESPONSIVE DESIGN (MEDIA QUERIES)
-   Concept: CSS Media Queries (@media) adapt layout, sizing, and structure
-   across Desktop, Tablet, and Mobile devices.
+   16. RESPONSIVE DESIGN
+
    ========================================================================== */
 
-/* TABLET BREAKPOINT (max-width: 992px) */
+/* Tablet layout */
 @media screen and (max-width: 992px) {
   .hero-container {
     grid-template-columns: 1fr;
@@ -1250,7 +1228,7 @@ main {
   }
 }
 
-/* MOBILE BREAKPOINT (max-width: 768px) */
+/* Mobile layout */
 @media screen and (max-width: 768px) {
   :root {
     --space-3xl: 3.5rem;
@@ -1414,7 +1392,7 @@ main {
   }
 }
 
-/* SMALL SCREENS & MOBILE (max-width: 640px) */
+/* Small screens */
 @media screen and (max-width: 640px) {
   .hero-actions {
     flex-direction: column;
@@ -1435,7 +1413,7 @@ main {
   }
 }
 
-/* SMALL MOBILE BREAKPOINT (max-width: 480px) */
+/* Small phones */
 @media screen and (max-width: 480px) {
   .hero-title {
     font-size: 2rem;
@@ -1497,7 +1475,7 @@ main {
   }
 }
 
-/* EXTRA SMALL MOBILE BREAKPOINT (max-width: 380px) */
+/* Extra-small phones */
 @media screen and (max-width: 380px) {
   .container {
     padding-left: 0.75rem;
@@ -1538,8 +1516,8 @@ main {
 }
 
 /* ==========================================================================
-   18. PRINT STYLESHEET
-   Concept: Clean output when a professor, recruiter, or evaluator prints the page.
+   17. PRINT STYLES
+
    ========================================================================== */
 @media print {
   .site-header,
